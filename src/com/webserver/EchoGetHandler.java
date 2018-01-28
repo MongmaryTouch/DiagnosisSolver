@@ -6,7 +6,7 @@ import java.util.*;
 
 import com.sun.net.httpserver.*;
 
-public class EchoGetHandler implements HttpHandler{
+public class EchoGetHandler implements HttpHandler{ //Handler to use for GET request aka to pass stuff :) 
 	@Override
 
     public void handle(HttpExchange he) throws IOException {
@@ -24,7 +24,7 @@ public class EchoGetHandler implements HttpHandler{
                      response += key + " = " + parameters.get(key) + "\n";
             he.sendResponseHeaders(200, response.length());
             OutputStream os = he.getResponseBody();
-            os.write(response.toString().getBytes());
+            os.write(("<meta http-equiv=\"refresh\" content=\"0; URL='\'\" />").getBytes());
 
             os.close();
     }

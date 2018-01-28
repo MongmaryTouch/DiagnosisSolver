@@ -3,7 +3,6 @@ package com.webserver;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
-
 import com.sun.net.httpserver.*;
 
 public class FileHandler implements HttpHandler{
