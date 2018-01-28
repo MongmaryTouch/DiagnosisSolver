@@ -6,11 +6,24 @@ import com.disease.*;
 import com.personal.*;
 import com.sun.net.httpserver.*;
 
+import com.webserver.*;
+
 public class Controller {
 	
 	public static void main(String[] args)
 	{	
 		try {
+			int port = 8080;
+			HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+			System.out.println("server started at " + port);
+			server.createContext("/", new RootHandler());
+			server.createContext("/echoHeader", new EchoHeaderHandler());
+			server.createContext("/echoGet", new EchoGetHandler());
+			server.createContext("/echoPost", new EchoPostHandler());
+			server.createContext("/hi.html", new FileHandler("./src/com/webserver/hi.html"));
+			server.setExecutor(null);
+			server.start();
+			
 			User user = new User("Joe", 'M');
 			
 			//TODO get list of symptoms from website
